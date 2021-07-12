@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:AppMagazine.ViewModels"
+             xmlns:models="clr-namespace:AppMagazine.Models"
+             mc:Ignorable="d"
+             x:Class="AppMagazine.Views.MainPage"
+             x:DataType="viewmodels:IssueListViewModel"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <viewmodels:IssueListViewModel/>
+    </ContentPage.BindingContext>
+
+    <ListView BackgroundColor="Transparent"
+              ItemsSource="{Binding Issues}"
+              HasUnevenRows="True"
+              SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="models:Issue">
+                <ViewCell>
+                    <Grid Padding="10">
+                        <Frame CornerRadius="20"
+                               HasShadow="True"
+                               BackgroundColor="WhiteSmoke">
+                            <StackLayout Orientation="Horizontal">
+                                <ImageButton Source="{Binding ImageUrl}"
+                                             WidthRequest="150"
+                                             BorderWidth="3"
+                                             BorderColor="PeachPuff"/>
+                                <StackLayout>
+                                    <Label VerticalOptions="Center"
+                                            FontSize="Large"
+                                            Text="{Binding Name}"/>
+                                    <Label VerticalOptions="Center"
+                                            FontSize="Large"
+                                            Text="{Binding Date}"/>
+
+                                </StackLayout>
+                            </StackLayout>
+                            
+                        </Frame>
+                        
+                    </Grid>
+                </ViewCell>
+                
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
+    
+</ContentPage>
