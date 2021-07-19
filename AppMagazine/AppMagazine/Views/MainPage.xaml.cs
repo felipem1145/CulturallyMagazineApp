@@ -16,5 +16,10 @@ namespace AppMagazine.Views
         {
             InitializeComponent();
         }
+
+        private async void GoViewerPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ViewerPage());
+        }
     }
 }

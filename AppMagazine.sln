@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMagazine.Android", "AppM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMagazine.iOS", "AppMagazine\AppMagazine.iOS\AppMagazine.iOS.csproj", "{FDED3D0C-47FF-4BE5-95DA-97B27903C435}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMagazine", "AppMagazine\AppMagazine\AppMagazine.csproj", "{8E440C4E-1E4E-4272-BF1E-811F327C9146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppMagazine", "AppMagazine\AppMagazine\AppMagazine.csproj", "{8E440C4E-1E4E-4272-BF1E-811F327C9146}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

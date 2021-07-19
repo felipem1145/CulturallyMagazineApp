@@ -7,5 +7,8 @@ namespace AppMagazine.ViewModels
 {
     public class ViewModelBase : BaseViewModel
     {
+        public string LogoCulturally { get; set; }
+
+        
     }
 }

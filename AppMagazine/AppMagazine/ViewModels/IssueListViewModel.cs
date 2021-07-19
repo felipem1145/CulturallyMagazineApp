@@ -20,6 +20,7 @@ namespace AppMagazine.ViewModels
         public IssueListViewModel()
         {
             Title = "Issues";
+            LogoCulturally = "LogoCulturally";
 
             Issues = new ObservableRangeCollection<Issue>();
             
@@ -31,5 +32,7 @@ namespace AppMagazine.ViewModels
 
             });
         }
+
+        
     }
 }

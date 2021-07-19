@@ -6,7 +6,8 @@
        mc:Ignorable="d"
        xmlns:local="clr-namespace:AppMagazine.Views"
        Title="AppMagazine"
-       x:Class="AppMagazine.AppShell">
+       x:Class="AppMagazine.AppShell"
+       FlyoutBackgroundColor="Black">
 
     <!-- 
         Styles and Resources 
@@ -14,24 +15,102 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Color x:Key="NavigationPrimary">#2196F3</Color>
+            
+
+
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.BackgroundColor" Value="Black" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
                 <Setter Property="Shell.TitleColor" Value="White" />
-                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
-                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="Shell.DisabledColor" Value="Black" />
+                <Setter Property="Shell.UnselectedColor" Value="Black" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="Black"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Black"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="Black"/>
+                <Setter Property="Shell.FlyoutBackgroundColor" Value="Black"/>
             </Style>
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}"/>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            
+
+
+            <Style x:Key="FloutItemStyle" TargetType="Grid">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="LightSalmon"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                    
+                </Setter>
+            </Style>
+
+            
+
+
         </ResourceDictionary>
     </Shell.Resources>
 
-    <FlyoutItem Title="MainPage" Icon="icon_about.png">
+    
+
+    <Shell.ItemTemplate>
+        <DataTemplate >
+            <Grid Style="{StaticResource FloutItemStyle}"
+                  RowDefinitions="Auto,*"
+                  Margin="0,40,0,0">
+                <Grid.ColumnDefinitions>
+                    
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+               
+                <Image Source="{Binding Icon}"
+                    Margin="5"
+                    HeightRequest="45" />
+                    <Label Grid.Column="1"
+                    Text="{Binding Title}"
+                    FontFamily="Walkway"
+                    FontSize="Large"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.FlyoutHeader>
+        <StackLayout BackgroundColor="Black">
+            <Image Source="LogoCulturally"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               BackgroundColor="Black"
+               HeightRequest="80"
+                   Margin="0,20,0,20"/>
+
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Home" Icon="Home_Icon.png">
         <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Get Involved" Icon="Social_Icon">
+        <ShellContent ContentTemplate="{DataTemplate local:GetInvolvedPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Website" Icon="Website_Icon">
+        <ShellContent ContentTemplate="{DataTemplate local:GoWebsitePage}"/>
+    </FlyoutItem>
+    
+
+ 
+
+
     <!-- Your Pages -->
     <!--<TabBar>
         <Tab Title="Browse" Icon="tab_feed.png">

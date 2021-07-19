@@ -8,46 +8,84 @@
              mc:Ignorable="d"
              x:Class="AppMagazine.Views.MainPage"
              x:DataType="viewmodels:IssueListViewModel"
-             BackgroundColor="White">
+             BackgroundColor="Black"
+             NavigationPage.HasNavigationBar="True">
+    
     <ContentPage.BindingContext>
         <viewmodels:IssueListViewModel/>
     </ContentPage.BindingContext>
 
-    <ListView BackgroundColor="Transparent"
-              ItemsSource="{Binding Issues}"
-              HasUnevenRows="True"
-              SeparatorVisibility="None">
-        <ListView.ItemTemplate>
-            <DataTemplate x:DataType="models:Issue">
-                <ViewCell>
-                    <Grid Padding="10">
-                        <Frame CornerRadius="20"
-                               HasShadow="True"
-                               BackgroundColor="WhiteSmoke">
-                            <StackLayout Orientation="Horizontal">
-                                <ImageButton Source="{Binding ImageUrl}"
-                                             WidthRequest="150"
-                                             BorderWidth="3"
-                                             BorderColor="PeachPuff"/>
-                                <StackLayout>
-                                    <Label VerticalOptions="Center"
-                                            FontSize="Large"
-                                            Text="{Binding Name}"/>
-                                    <Label VerticalOptions="Center"
-                                            FontSize="Large"
-                                            Text="{Binding Date}"/>
 
-                                </StackLayout>
-                            </StackLayout>
-                            
-                        </Frame>
-                        
-                    </Grid>
-                </ViewCell>
-                
-            </DataTemplate>
-        </ListView.ItemTemplate>
-        
-    </ListView>
+
+    <StackLayout>
+
+        <StackLayout BackgroundColor="LightSalmon">
+            <Label Text="Read about the latest arts news through editorials, event coverage, artist interviews, and features!!!"
+                TextColor="White"
+                FontSize="Large"               
+                FontFamily="Walkway"
+                Margin="40,20,40,20"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                />
+            
+        </StackLayout>
     
+    
+
+        <ListView BackgroundColor="Transparent"
+                  ItemsSource="{Binding Issues}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Issue">
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Frame CornerRadius="20"
+                                   HasShadow="True"
+                                   BackgroundColor="Transparent"
+                                  
+                                   >
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Margin="40,20,0,0">
+                                        <ImageButton Source="{Binding ImageUrl}"
+                                                 WidthRequest="150"
+                                                 BorderWidth="3"
+                                                 BorderColor="DarkGray"
+                                                 Clicked="GoViewerPage"/>
+                                        <StackLayout Margin="0,50,0,0">
+                                            <Label VerticalOptions="End"
+                                                   HorizontalOptions="EndAndExpand"
+                                                FontSize="Large"
+                                                   FontFamily="Walkway"
+                                                Text="{Binding Name}"
+                                                   TextColor="PeachPuff"/>
+                                            <Label VerticalOptions="End"
+                                                   HorizontalOptions="EndAndExpand"
+                                                FontSize="Large"
+                                                Text="{Binding Date}"
+                                                FontFamily="Walkway"   
+                                                   TextColor="PeachPuff"/>
+
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Image Source="Shelf1"
+                                           VerticalOptions="Start"
+                                           WidthRequest="{OnPlatform iOS=400, Android=395}"/>
+                                </StackLayout>
+                                
+                    
+                            </Frame>
+                        
+                        </Grid>
+                    </ViewCell>
+                
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        
+        </ListView>
+
+    </StackLayout>
+
 </ContentPage>
